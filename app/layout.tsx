@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "HiveMicroRitual",
-  description: "A 10-second ritual for clarity, resonance, and relief.",
+  title: "HiveMicroRitual — Ten-second emotional reset",
+  description: "HiveMicroRitual — a ten-second ritual for clarity, resonance, and relief. Free forever.",
+  icons: { icon: '/icon.svg' },
+  openGraph: { title: "HiveMicroRitual", description: "Ten-second emotional reset ritual engine." },
 };
 
 export default function RootLayout({
