@@ -1,0 +1,583 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+:root {
+  --bg: #120f0d;
+  --bg-elevated: rgba(35, 26, 22, 0.8);
+  --bg-card: rgba(246, 232, 216, 0.08);
+  --bg-card-strong: rgba(246, 232, 216, 0.12);
+  --border: rgba(246, 219, 187, 0.14);
+  --border-strong: rgba(246, 219, 187, 0.28);
+  --text-primary: #f7efe5;
+  --text-secondary: rgba(247, 239, 229, 0.72);
+  --text-muted: rgba(247, 239, 229, 0.5);
+  --accent: #ff8c69;
+  --accent-strong: #ffb06b;
+  --accent-cool: #c9f2df;
+  --shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background:
+    radial-gradient(circle at top left, rgba(255, 176, 107, 0.2), transparent 28%),
+    radial-gradient(circle at 80% 20%, rgba(201, 242, 223, 0.12), transparent 24%),
+    linear-gradient(180deg, #191411 0%, #120f0d 100%);
+  color: var(--text-primary);
+  font-family: Manrope, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: 0;
+}
+
+.site-footer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1.5rem 1rem 2rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.ritual-shell {
+  position: relative;
+  min-height: calc(100vh - 72px);
+  overflow: hidden;
+}
+
+.ritual-shell::before,
+.ritual-shell::after {
+  content: "";
+  position: absolute;
+  inset: auto;
+  border-radius: 999px;
+  filter: blur(12px);
+  pointer-events: none;
+}
+
+.ritual-shell::before {
+  width: 18rem;
+  height: 18rem;
+  top: 5rem;
+  left: -4rem;
+  background: rgba(255, 140, 105, 0.14);
+}
+
+.ritual-shell::after {
+  width: 24rem;
+  height: 24rem;
+  right: -7rem;
+  bottom: 2rem;
+  background: rgba(201, 242, 223, 0.09);
+}
+
+.ritual-stage {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1120px);
+  margin: 0 auto;
+  padding: 1.25rem 1rem 4rem;
+}
+
+.ritual-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.ritual-wordmark {
+  font-family: Fraunces, serif;
+  font-size: 1.1rem;
+  letter-spacing: -0.03em;
+}
+
+.ritual-wordmark span {
+  color: var(--accent);
+}
+
+.ghost-button,
+.chip-button {
+  background: rgba(246, 232, 216, 0.06);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.ghost-button:hover,
+.chip-button:hover,
+.ghost-button:focus-visible,
+.chip-button:focus-visible {
+  transform: translateY(-1px);
+  border-color: var(--border-strong);
+  background: rgba(246, 232, 216, 0.1);
+  outline: none;
+}
+
+.ghost-button {
+  padding: 0.7rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.ritual-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+  gap: 1.1rem;
+  align-items: stretch;
+}
+
+.surface-card,
+.output-card,
+.tour-card,
+.welcome-card,
+.saved-card,
+.auto-demo {
+  backdrop-filter: blur(20px);
+  background: linear-gradient(180deg, rgba(246, 232, 216, 0.1), rgba(246, 232, 216, 0.05));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.surface-card,
+.output-card,
+.saved-card {
+  border-radius: 2rem;
+}
+
+.surface-card {
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-height: 36rem;
+}
+
+.eyebrow {
+  color: var(--accent-cool);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.surface-card h1 {
+  font-family: Fraunces, serif;
+  font-size: clamp(2.9rem, 7vw, 5.9rem);
+  line-height: 0.94;
+  letter-spacing: -0.05em;
+}
+
+.surface-card p {
+  max-width: 26rem;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.input-shell {
+  position: relative;
+  border-radius: 1.6rem;
+  background: rgba(18, 15, 13, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.ritual-textarea {
+  width: 100%;
+  min-height: 9rem;
+  resize: none;
+  padding: 1.25rem 1.25rem 3.75rem;
+  background: transparent;
+  color: var(--text-primary);
+  border: 0;
+  outline: none;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.ritual-textarea::placeholder {
+  color: rgba(247, 239, 229, 0.42);
+}
+
+.placeholder-strip {
+  position: absolute;
+  left: 1.25rem;
+  bottom: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.placeholder-label {
+  opacity: 0.8;
+}
+
+.placeholder-ghost {
+  color: var(--accent-strong);
+}
+
+.begin-button {
+  position: relative;
+  overflow: hidden;
+  padding: 1.2rem 1.3rem;
+  border-radius: 999px;
+  color: #1f140f;
+  background: linear-gradient(135deg, var(--accent-strong), var(--accent));
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 16px 32px rgba(255, 140, 105, 0.18);
+}
+
+.begin-button:disabled {
+  opacity: 0.65;
+  cursor: progress;
+}
+
+.surface-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.meta-pill {
+  padding: 0.85rem 0.95rem;
+  border-radius: 1.2rem;
+  background: rgba(246, 232, 216, 0.06);
+  border: 1px solid rgba(246, 232, 216, 0.08);
+}
+
+.meta-pill strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.85rem;
+}
+
+.meta-pill span {
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.output-card {
+  position: relative;
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 36rem;
+}
+
+.output-card::before {
+  content: "";
+  position: absolute;
+  inset: 1rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+}
+
+.output-header,
+.output-actions,
+.saved-header,
+.welcome-actions,
+.tour-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.type-pill,
+.source-pill,
+.save-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  padding: 0.48rem 0.8rem;
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.type-pill {
+  background: rgba(255, 176, 107, 0.13);
+  color: var(--accent-strong);
+}
+
+.source-pill,
+.save-status {
+  background: rgba(201, 242, 223, 0.1);
+  color: var(--accent-cool);
+}
+
+.output-copy {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1rem;
+  padding: 1.2rem 0 1.6rem;
+}
+
+.output-copy h2 {
+  font-family: Fraunces, serif;
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+.output-copy p {
+  font-size: clamp(1.2rem, 2.4vw, 1.65rem);
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+  max-width: 32rem;
+}
+
+.output-copy small,
+.saved-card p,
+.tour-card p,
+.welcome-card p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.output-actions {
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+}
+
+.action-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.chip-button {
+  padding: 0.85rem 1rem;
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.next-button {
+  background: linear-gradient(135deg, rgba(255, 176, 107, 0.22), rgba(255, 140, 105, 0.26));
+  color: var(--text-primary);
+  border-color: rgba(255, 176, 107, 0.3);
+}
+
+.swipe-note {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.saved-card {
+  margin-top: 1rem;
+  padding: 1.2rem 1.25rem;
+  background: rgba(246, 232, 216, 0.06);
+}
+
+.saved-list {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.saved-item {
+  padding: 0.95rem 1rem;
+  border-radius: 1.2rem;
+  background: rgba(18, 15, 13, 0.42);
+  border: 1px solid rgba(246, 232, 216, 0.08);
+}
+
+.saved-item strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.78rem;
+  color: var(--accent-strong);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.saved-item p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.welcome-card,
+.tour-card,
+.auto-demo {
+  position: fixed;
+  z-index: 30;
+  max-width: 22rem;
+  border-radius: 1.4rem;
+  padding: 1rem 1.05rem;
+}
+
+.welcome-card {
+  top: 1rem;
+  left: 1rem;
+}
+
+.tour-card {
+  top: 1rem;
+  right: 1rem;
+}
+
+.welcome-card h3,
+.tour-card h3,
+.auto-demo h3 {
+  font-family: Fraunces, serif;
+  font-size: 1.3rem;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.45rem;
+}
+
+.welcome-actions,
+.tour-actions {
+  margin-top: 0.8rem;
+}
+
+.text-button {
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.text-button:hover,
+.text-button:focus-visible {
+  color: var(--text-primary);
+  outline: none;
+}
+
+.tour-steps {
+  display: flex;
+  gap: 0.45rem;
+  margin-bottom: 0.7rem;
+}
+
+.tour-step {
+  width: 100%;
+  height: 0.2rem;
+  border-radius: 999px;
+  background: rgba(246, 232, 216, 0.09);
+}
+
+.tour-step.is-active {
+  background: linear-gradient(90deg, var(--accent-strong), var(--accent));
+}
+
+.auto-demo {
+  bottom: 1rem;
+  right: 1rem;
+  background: rgba(25, 20, 17, 0.9);
+}
+
+.auto-demo-label {
+  color: var(--accent-cool);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.45rem;
+}
+
+.auto-demo .typed-line {
+  min-height: 1.6rem;
+  color: var(--accent-strong);
+}
+
+.auto-demo .demo-ritual {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(246, 232, 216, 0.08);
+}
+
+.status-line {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+@media (max-width: 920px) {
+  .ritual-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .surface-card,
+  .output-card {
+    min-height: unset;
+  }
+
+  .surface-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .tour-card,
+  .welcome-card,
+  .auto-demo {
+    left: 1rem;
+    right: 1rem;
+    max-width: none;
+  }
+
+  .tour-card {
+    top: auto;
+    bottom: 1rem;
+  }
+
+  .auto-demo {
+    bottom: 8.7rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .ritual-stage {
+    padding: 1rem 0.8rem 3rem;
+  }
+
+  .ritual-topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .surface-card,
+  .output-card {
+    border-radius: 1.5rem;
+    padding: 1.1rem;
+  }
+
+  .output-copy h2 {
+    font-size: 2rem;
+  }
+}
