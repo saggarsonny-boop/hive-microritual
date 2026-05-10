@@ -2,6 +2,8 @@
 @import "tailwindcss";
 
 :root {
+  --hive-gold: #D4AF37;
+
   --bg: #120f0d;
   --bg-elevated: rgba(35, 26, 22, 0.8);
   --bg-card: rgba(246, 232, 216, 0.08);
